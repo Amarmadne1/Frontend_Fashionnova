@@ -82,12 +82,8 @@ export default function ProductDetails() {
   };
 
   const handleClick = () => {
-    if (!selectedSize) {
-      return   toast.warn('Please select a Size!', {
-        position: 'top-center',
-        autoClose: 3000,
-        pauseOnHover: false
-      }); 
+    if(!selectedSize){
+      alert("select size")
     }
     else if(!jwt){
      
@@ -547,7 +543,7 @@ if(!jwt){
         <section className="pt-10">
           <h1 className="py-5 text-xl font-bold">Similer Products</h1>
           <div className="lg:col-span-4 w-full py-5 border">
-                  <div className="flex flex-wrap justify-center bg-white border py-5 rounded-md ">
+                  <div className="flex flex-wrap justify-center bg-white  py-5 rounded-md ">
                     {customersProduct?.products?.content?.map((item) => (
                       <SimiliarProductSection product={item} />
                     ))}

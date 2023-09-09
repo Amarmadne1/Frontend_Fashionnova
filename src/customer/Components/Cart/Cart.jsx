@@ -18,6 +18,10 @@ const Cart = () => {
   }, [jwt]);
   return (
     <div className="">
+      {(cart.cartItems.length==0) && 
+        <div className="mt-20 mb-20 text-3xl text-gray-500 text-center">No items in cart</div>
+      }
+      :
       {cart.cartItems.length>0 && <div className="lg:grid grid-cols-3 lg:px-16 relative">
         <div className="lg:col-span-2 lg:px-5 bg-white">
         <div className=" space-y-3">
@@ -63,7 +67,7 @@ const Cart = () => {
           </Button>
         </div>
       </div>
-      </div>}:<div className="text-4xl text-gray-500 text-center h-200">No items in cart</div>
+      </div>}
       
     </div>
   );

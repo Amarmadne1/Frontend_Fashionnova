@@ -6,7 +6,7 @@ import { deepPurple } from "@mui/material/colors";
 import StarIcon from "@mui/icons-material/Star";
 import { getOrderById } from "../../../Redux/Customers/Order/Action";
 import OrderTraker from "../orders/OrderTraker";
-import AddressCard from "../adreess/AdreessCard";
+import AddressCard from "../Address/AdreessCard";
 import { useParams } from "react-router-dom";
 import { emptyCart, removeCartItem} from "../../../Redux/Customers/Cart/Action";
 import { getCart } from "../../../Redux/Customers/Cart/Action";

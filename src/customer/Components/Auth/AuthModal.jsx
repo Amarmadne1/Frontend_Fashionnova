@@ -7,6 +7,9 @@ import LoginUserForm from "./Login";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Alert, Snackbar } from "@mui/material";
+import { toast } from "react-toastify";
+import { UserContext } from "../../../UserContext";
+import { useContext } from "react";
 
 const style = {
   position: "absolute",
@@ -21,9 +24,15 @@ const style = {
 
 export default function AuthModal({ handleClose, open }) {
   const location = useLocation();
+  const {validationerror,setValidationerror } = useContext(UserContext);
   const { auth } = useSelector((store) => store);
   useEffect(() => {
-    if (auth.user) handleClose();
+    if (auth.user) 
+    {
+      handleClose();
+    
+    }
+  
   }, [auth.user]);
   return (
     <>

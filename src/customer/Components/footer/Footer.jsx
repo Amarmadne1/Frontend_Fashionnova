@@ -4,7 +4,7 @@ import { LinkedIn, YouTube, Twitter, Facebook } from "@mui/icons-material";
 
 
 const footerStyle = {
-  backgroundColor: "black",
+  backgroundColor: "rgb(124 58 237)",
   padding: "24px",
   marginTop: "50px",
   marginBottom: "0px"
@@ -122,7 +122,7 @@ const Footer = () => {
       <Grid container justify="center" alignItems="center" spacing={2}>
         <Grid item>
           <Link
-            href="/AboutUS"
+            href="/about"
             style={linkStyle}
             underline="none"
             sx={{ "&:hover": hoverStyle }}

@@ -32,7 +32,7 @@ const MyAccountPage = () => {
 
  
 
-  const handlelog = () => {
+  const handlelog = () => { 
 
     sessionStorage.removeItem('isLoggedin');
 

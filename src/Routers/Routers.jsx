@@ -2,7 +2,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Homepage from "../Pages/Homepage";
-import About from "../Pages/About";
+import AboutUsPage from "../Pages/About";
 import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import TearmsCondition from "../Pages/TearmsCondition";
 import Contact from "../Pages/Contact";
@@ -15,6 +15,19 @@ import AdminPannel from "../Admin/AdminPannel";
 import Navigation from "../customer/Components/Navbar/Navigation";
 
 const Routers = () => {
+  const jwt = localStorage.getItem("jwt");
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+     
+      axios.get(`${API_BASE_URL}/api/users/profile`,{
+        headers:{
+          "Authorization":`Bearer ${jwt}`
+        }
+      })
+          .then(response => setProduct(response.data));
+     
+  }, []);
   return (
     <div>
         <div>
@@ -34,7 +47,7 @@ const Routers = () => {
         <Route path="/cart" element={<Cart/>}></Route>
       
 
-        <Route path="/admin" element={<AdminPannel/>}></Route>
+        <Route path="/admin" element={product.role === 'admin' ? ( <AdminPannel /> ) : ( <About/> ) } />
         <Route path="/demo" element={<DemoAdmin/>}></Route>
 
       </Routes>

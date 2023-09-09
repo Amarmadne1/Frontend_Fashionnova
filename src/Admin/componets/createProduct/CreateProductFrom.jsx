@@ -228,14 +228,17 @@ const jwt=localStorage.getItem("jwt")
                 label="Third Level Category"
               >
                 <MenuItem value="top">Tops</MenuItem>
-                <MenuItem value="women_dress">Dresses</MenuItem>
-                <MenuItem value="t-shirts">T-Shirts</MenuItem>
-                <MenuItem value="saree">Saree</MenuItem>
-                <MenuItem value="shirt">shirt</MenuItem>
-                <MenuItem value="men's_kurta">men's_kurta</MenuItem>
-                <MenuItem value="men's_jeans">men_jeans</MenuItem>
-                <MenuItem value="lengha_choli">Lengha Choli</MenuItem>
-                <MenuItem value="lengha_choli">shoes</MenuItem>
+                <MenuItem value="women dress">Dresses</MenuItem>
+                <MenuItem value="sarees">Sarees</MenuItem>
+                <MenuItem value="shirt">Shirts</MenuItem>
+                <MenuItem value="men kurtas">Men kurtas</MenuItem>
+                <MenuItem value="men jeans">Men jeans</MenuItem>
+                <MenuItem value="lengha choli">Lengha Choli</MenuItem>
+                <MenuItem value="shoes">Shoes</MenuItem>
+                <MenuItem value="gouns">Gouns</MenuItem>
+                <MenuItem value="women jeans">Women jeans</MenuItem>
+                <MenuItem value="women kurtas">Women kurtas</MenuItem>
+
               </Select>
             </FormControl>
           </Grid>

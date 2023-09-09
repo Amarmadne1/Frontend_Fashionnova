@@ -5,7 +5,7 @@ import CartItem from "../Cart/CartItem";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderById } from "../../../Redux/Customers/Order/Action";
-import AddressCard from "../adreess/AdreessCard";
+import AddressCard from "../Address/AdreessCard";
 import { createPayment } from "../../../Redux/Customers/Payment/Action";
 
 const OrderSummary = () => {

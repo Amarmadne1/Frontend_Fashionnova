@@ -174,12 +174,7 @@ if (validationErrors.email === "" && validationErrors.password === "") {
 
 validationErrors.email !== "" ||
 
-    validationErrors.password !== "" ||
-
-    !formValues.firstName ||
-
-    !formValues.lastName;
-
+    validationErrors.password !== "" 
  
 
   return (
@@ -365,7 +360,7 @@ helperText={validationErrors.email}
         </div>
 
       </div>
-
+{/* 
       <Snackbar open={openSnackBar} autoHideDuration={6000} onClose={handleClose}>
 
         <Alert onClose={handleClose} severity={auth.error ? "error" : "success"} sx={{ width: '100%' }}>
@@ -374,7 +369,7 @@ helperText={validationErrors.email}
 
         </Alert>
 
-      </Snackbar>
+      </Snackbar> */}
 
     </div>
 

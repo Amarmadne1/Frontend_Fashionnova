@@ -3,7 +3,7 @@ import React from "react";
 import OrderTraker from "./OrderTraker";
 import StarIcon from "@mui/icons-material/Star";
 import { useNavigate, useParams } from "react-router-dom";
-import AddressCard from "../adreess/AdreessCard";
+import AddressCard from "../Address/AdreessCard";
 import { deepPurple } from "@mui/material/colors";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -40,7 +40,9 @@ const OrderDetails = () => {
           <Grid item xs={9}>
             <OrderTraker
               activeStep={
-                order.order?.orderStatus === "PLACED"
+                order.order?.orderStatus === "PENDING"
+                  ? 0
+               : order.order?.orderStatus === "PLACED"
                   ? 1
                   : order.order?.orderStatus === "CONFIRMED"
                   ? 2

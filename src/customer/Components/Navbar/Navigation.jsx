@@ -6,7 +6,9 @@ import {
   ShoppingBagIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { TextField, IconButton } from "@mui/material";
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { TextField, IconButton} from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { AccountCircle } from "@mui/icons-material";
 import { toast } from "react-toastify";
@@ -37,12 +39,13 @@ export default function Navigation() {
   const jwt = localStorage.getItem("jwt");
   const location = useLocation();
 
-  const { searchResults, setSearchResults,searchText, setSearchText } = useContext(UserContext);
+  const { searchResults, setSearchResults,searchText, setSearchText , admin , setAdmin } = useContext(UserContext);
 
   useEffect(() => {
     if (jwt) {
       dispatch(getUser(jwt));
       dispatch(getCart(jwt));
+     
     }
   }, [jwt]);
 
@@ -82,6 +85,7 @@ export default function Navigation() {
   useEffect(() => {
     if (auth.user) {
       handleClose();
+      
     }
     if (location.pathname === "/login" || location.pathname === "/register") {
       navigate(-1);
@@ -92,6 +96,7 @@ export default function Navigation() {
     handleCloseUserMenu();
     dispatch(logout());
     window.location.replace("/");
+  
   };
   const handleMyOrderClick = () => {
     handleCloseUserMenu();
@@ -117,6 +122,12 @@ export default function Navigation() {
       });
     }
   };
+  const adminnavigator = () => {
+    setAdmin(true)
+  navigate("/admin");
+   
+  };
+
 
   return (
     <div className="bg-white pb-10">
@@ -190,7 +201,7 @@ export default function Navigation() {
                               key={item.name}
                               className="group relative text-sm"
                             >
-                              <div className="aspect-h-1 aspect-w-1 h-1/2 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                              <div className="aspect-h-1 aspect-w-1  overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
                                 <img
                                   src={item.imageSrc}
                                   alt={item.imageAlt}
@@ -263,7 +274,7 @@ export default function Navigation() {
       </Transition.Root>
 {/* mobilemenu  ends*/}
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
+        <p className="flex h-10 items-center justify-center bg-violet-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
           Get free delivery on orders over ₹100
         </p>
 
@@ -337,7 +348,7 @@ export default function Navigation() {
                                           key={item.name}
                                           className="group relative text-base sm:text-sm"
                                         >
-                                          <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                                          <div className={item.css}>
                                             <img
                                               src={item.imageSrc}
                                               alt={item.imageAlt}
@@ -425,7 +436,7 @@ export default function Navigation() {
               </Popover.Group>
 
   {/* Search */}
-  <div style={{ width: '30%', marginLeft:'180px' }}>
+  <div style={{ width: '30%', marginLeft:'150px' }}>
           <TextField
             fullWidth variant="outlined"
             sx={{ border: '1px solid white', borderRadius: '2px', background: 'white' }}
@@ -458,7 +469,7 @@ export default function Navigation() {
 
 
 
-              <div className="ml-auto flex items-center">
+              <div className="ml-10 flex items-center">
                   {auth.user ? (
                     <div className="lg:mr-1 md:mr-3">
                       <Avatar
@@ -486,6 +497,7 @@ export default function Navigation() {
                         Dashboard
                       </Button> */}
                       <Menu
+                      className="ml-auto"
                         id="basic-menu"
                         anchorEl={anchorEl}
                         open={openUserMenu}
@@ -496,9 +508,9 @@ export default function Navigation() {
                       >
 
                         <MenuItem onClick={handleMyOrderClick}>
-                          My Orders
+                      <ListAltIcon sx={{color:"grey"}}/> <div className="ml-2 text-gray-500">My orders</div> 
                         </MenuItem>
-                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                        <MenuItem onClick={handleLogout}><ExitToAppIcon sx={{color:"grey"}}/> <div className="ml-2 text-gray-500">Log out</div> </MenuItem>
                       </Menu>
                     </div>
                   ) : (
@@ -530,6 +542,18 @@ export default function Navigation() {
                     <span className="sr-only">items in cart, view bag</span>
                   </Button>
                 </div>
+
+                  {/* Admin */}
+                  {auth.user?.role=="admin" && 
+                  <div className="ml-4 flow-root lg:ml-6">
+                  <Button
+                    onClick={adminnavigator}
+                    className="group -m-2 flex items-center p-2"
+                  >
+                    Admin
+                  
+                  </Button>
+                </div>}
               </div>
             </div>
           </div>

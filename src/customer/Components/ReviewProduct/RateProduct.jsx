@@ -116,7 +116,7 @@ const RateProduct = () => {
               className="space-y-5 p-5 shadow-md border rounded-md"
             >
               <TextField
-                label="Title"
+                label="Review"
                 variant="outlined"
                 fullWidth
                 margin="normal"
@@ -124,17 +124,7 @@ const RateProduct = () => {
                 onChange={handleChange}
                 name="title"
               />
-              <TextField
-                label="Description"
-                variant="outlined"
-                fullWidth
-                margin="normal"
-                multiline
-                rows={4}
-                value={formData.description}
-                onChange={handleChange}
-                name="description"
-              />
+           
               <Button type="submit" variant="contained" color="primary">
                 Submit Review
               </Button>

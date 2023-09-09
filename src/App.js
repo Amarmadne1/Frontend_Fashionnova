@@ -5,16 +5,40 @@ import CustomerRoutes from './Routers/CustomerRoutes';
 import AdminRoutes from './Routers/AdminRoutes';
 import NotFound from './Pages/Notfound';
 import AdminPannel from './Admin/AdminPannel';
+import { useEffect, useState } from 'react';
+import { API_BASE_URL } from './config/api';
+import axios from 'axios';
+import AboutUsPage from './Pages/About';
+import { UserContext } from './UserContext';
+import { useContext } from "react";
+import Homepage from './Pages/Homepage';
+import AccessDenied from './Pages/AccessDenied';
 // import Routers from './Routers/Routers';
 
 function App() {
-  const isAdmin=true;
+  // const jwt = localStorage.getItem("jwt");
+  // const [product, setProduct] = useState(null);
+
+  // useEffect(() => {
+     
+  //     axios.get(`${API_BASE_URL}/api/users/profile`,{
+  //       headers:{
+  //         "Authorization":`Bearer ${jwt}`
+  //       }
+  //     })
+  //         .then(response => setProduct(response.data));
+     
+  // }, []);
+  const {  admin , setAdmin } = useContext(UserContext);
+ 
   return (
     <div className="">
       
       <Routes>
         <Route path="/*" element={<CustomerRoutes />} />
-        <Route path="/admin/*" element={<AdminPannel />} />
+        
+        <Route path="/admin/*" element={admin ? ( <AdminPannel /> ) : ( <AccessDenied/> ) } />
+
         
       </Routes>
     </div>
