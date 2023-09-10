@@ -2,232 +2,120 @@ import React, { useState, useEffect } from "react";
 
 import { Container, Typography, Button, Avatar } from "@material-ui/core";
 
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 
-import InfoIcon from '@mui/icons-material/Info';
+import InfoIcon from "@mui/icons-material/Info";
 
-import HelpIcon from '@mui/icons-material/Help';
+import HelpIcon from "@mui/icons-material/Help";
 
-import LocalMallcontainedIcon from '@mui/icons-material/LocalMall';
+import LocalMallcontainedIcon from "@mui/icons-material/LocalMall";
 
 import axios from "axios";
 
-import PolicyIcon from '@mui/icons-material/Policy';
+import PolicyIcon from "@mui/icons-material/Policy";
 
 import { API_BASE_URL } from "../../../config/api";
-
- 
+import Person2Icon from '@mui/icons-material/Person2';
+import { AccountCircle } from "mdi-material-ui";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import EmailIcon from '@mui/icons-material/Email';
+import { deepPurple } from "@mui/material/colors";
 
 const MyAccountPage = () => {
-
   const jwt = localStorage.getItem("jwt");
 
   const [userDetail, setUserDetails] = useState([]);
 
- 
+  const handlelog = () => {
+    sessionStorage.removeItem("isLoggedin");
 
-  const handlelog = () => { 
-
-    sessionStorage.removeItem('isLoggedin');
-
-    toast.success('User Logged out Successfully!', {
-
+    toast.success("User Logged out Successfully!", {
       position: "top-center",
 
       autoClose: 1000,
 
       pauseOnHover: false,
-
     });
-
   };
 
- 
-
   const getUserDetails = () => {
-
     axios
 
       .get(`${API_BASE_URL}/api/users/profile`, {
-
         headers: {
-
           Authorization: `Bearer ${jwt}`,
-
         },
-
       })
 
       .then((response) => {
-
-        console.log("response user details api myAccount", response)
+        console.log("response user details api myAccount", response);
 
         setUserDetails(response?.data);
-
       })
 
-      .catch(error => console.log('--userinfo--', error));
-
+      .catch((error) => console.log("--userinfo--", error));
   };
 
- 
-
   useEffect(() => {
-
-    getUserDetails()
-
+    getUserDetails();
   }, []);
 
- 
-
   return (
-
-    <Container maxWidth="sm">
-
+    <Container maxWidth="sm" className="accountfooter ">
       <div className="flex flex-col items-center justify-center text-center">
+        <Typography
+          variant="h4"
+          component="h1"
+          className="text-3xl text-gray-600"
+        >
+          <AccountBoxIcon
+            sx={{
+              height: "50px",
+              width: "50px",
+              color: "rgb(124 58 237)",
+            }}
+          />{" "}
+          My Profile{" "}
+        </Typography>
 
-        <Typography variant="h4" component="h1"> My Profile </Typography>
-
-        <Typography variant="body1"> Welcome to your account page! Here you can manage your profile and settings. </Typography>
-
-        
-
-        <div className="mt-6">
-
-          <div className="flex items-center">
-
-            <Avatar className="w-24 h-24 bg-purple-600 text-white text-2xl">
-
-              {userDetail.user?.firstName[0].toUpperCase()}
-
-            </Avatar>
-
+        <div className="mt-6 ml-6 ">
+          <div className="flex items-center ">
             <div className="ml-4 text-left">
+              <div className="text-gray-600 bold text-xl">
+                <Person2Icon
+                  sx={{
+                    height: "35px",
+                    width: "30px",
+                    color: "rgb(124 58 237)",
+                    marginRight:"3px",
+                  }}
+                />
+                  Name : {`${userDetail?.firstName} ${userDetail?.lastName}`}
+              </div>
 
-              <div className="text-lg font-semibold">Name: {`${userDetail?.firstName} ${userDetail?.lastName}`}</div>
-
-              <div className="text-lg">Email: {userDetail?.email}</div>
-
+              <div className="mt-4 text-gray-600 bold text-xl">
+                <EmailIcon
+                  sx={{
+                    height: "35px",
+                    width: "30px",
+                    color: "rgb(124 58 237)",
+                    marginRight:"3px",
+                  }}
+                />
+                Email : {userDetail?.email}
+              </div>
             </div>
-
           </div>
-
-          
-
-          <div className="mt-6">
-
-            <div className="flex justify-center">
-
-              <Link to="/orders">
-
-                <Button className="bg-purple-600 text-white m-2" variant="contained" startIcon={<LocalMallcontainedIcon />}>
-
-                  Orders
-
-                </Button>
-
-              </Link>
-
-              <Link to="/wishlist">
-
-                <Button className="bg-purple-600 text-white m-2" variant="contained" startIcon={<ShoppingBasketIcon />}>
-
-                  Wishlist
-
-                </Button>
-
-              </Link>
-
-              <Link>
-
-                <Button className="bg-purple-600 text-white m-2" variant="contained" startIcon={<LocalOfferIcon />}>
-
-                  Coupons
-
-                </Button>
-
-              </Link>
-
-            </div>
-
-            
-
-            <div className="flex justify-center mt-4">
-
-              <Link to="/AboutUS">
-
-                <Button className="bg-purple-600 text-white m-2" variant="contained" startIcon={<InfoIcon />}>
-
-                  About Us
-
-                </Button>
-
-              </Link>
-
-              <Link to="/HelpCenter">
-
-                <Button className="bg-purple-600 text-white m-2" variant="contained" startIcon={<HelpIcon />}>
-
-                  Help Center
-
-                </Button>
-
-              </Link>
-
-              <Link href="/privacy-policy">
-
-                <Button href="/privacy-policy" className="bg-purple-600 text-white m-2" variant="contained" startIcon={<PolicyIcon />}>
-
-                  Policy
-
-                </Button>
-
-              </Link>
-
-            </div>
-
-          </div>
-
-          
-
-          <div className="mt-6">
-
-            <Link to="/login">
-
-              <Button
-
-                style={{ backgroundColor: "#9155FD", height: "40px", width: "200px", color: "white" }}
-
-                variant="contained"
-
-                onClick={handlelog}
-
-              >
-
-                Log Out
-
-              </Button>
-
-            </Link>
-
-          </div>
-
         </div>
-
       </div>
-
     </Container>
-
   );
-
 };
-
- 
 
 export default MyAccountPage;

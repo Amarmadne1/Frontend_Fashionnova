@@ -22,9 +22,9 @@ const Order = () => {
   }, [jwt]);
   return (
     <Box className="px-10">
-      <Grid container spacing={0} sx={{ justifyContent: "space-around" }}>
+      <Grid container spacing={0} sx={{ justifyContent: "space-between" }}>
         {order.orders?.length==0 && <div className="orderfooter text-3xl text-gray-500 text-center">You have not ordered anything till now</div>}
-        {/* <Grid item xs={2.5} className="">
+        <Grid item xs={2.5} className="">
           <div className="h-auto shadow-lg bg-white border p-5 sticky top-5">
             <h1 className="font-bold text-lg">Filters</h1>
             <div className="space-y-4 mt-10">
@@ -49,7 +49,7 @@ const Order = () => {
               ))}
             </div>
           </div>
-        </Grid> */}
+        </Grid>
         <Grid item xs={9}>
           <Box className="space-y-5 ">
             {order.orders?.length>0 && order.orders?.map((order)=> {

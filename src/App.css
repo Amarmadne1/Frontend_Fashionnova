@@ -1,4 +1,17 @@
 .orderfooter{
-    margin-top: 94px;
-    margin-bottom: 94px;
+    margin-top: 98px;
+    margin-bottom: 98px;
+}
+.cartfooter{
+    margin-top: 86px;
+    margin-bottom: 86px;
+}
+
+.accountfooter{
+    margin-top: 20px;
+    margin-bottom: 140px;
+}
+.notfoundfooter{
+    margin-top: 20px;
+    margin-bottom: 97px;
 }

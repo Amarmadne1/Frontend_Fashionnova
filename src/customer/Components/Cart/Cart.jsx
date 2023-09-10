@@ -19,7 +19,7 @@ const Cart = () => {
   return (
     <div className="">
       {(cart.cartItems.length==0) && 
-        <div className="mt-20 mb-20 text-3xl text-gray-500 text-center">No items in cart</div>
+        <div className="cartfooter text-3xl text-gray-500 text-center">No items in cart</div>
       }
       :
       {cart.cartItems.length>0 && <div className="lg:grid grid-cols-3 lg:px-16 relative">

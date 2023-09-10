@@ -8,7 +8,7 @@ export const UserProvider = ({ children }) => {
     
 const [searchResults, setSearchResults] = useState([]);
 const [searchText, setSearchText] = useState('');
-const [admin, setAdmin] = useState(false);
+const [admin, setAdmin] = useState();
 const [validationerror, setValidationerror] = useState();
 return (
 <UserContext.Provider value={{searchResults, setSearchResults,searchText, setSearchText,admin, setAdmin }}>

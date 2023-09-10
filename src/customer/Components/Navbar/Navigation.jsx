@@ -24,6 +24,7 @@ import { useContext } from "react";
 import { getCart } from "../../../Redux/Customers/Cart/Action";
 import { API_BASE_URL } from "../../../config/api";
 
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -102,10 +103,10 @@ export default function Navigation() {
     handleCloseUserMenu();
     navigate("/account/order");
   };
-  // const handleProfile = () => {
-  //   handleCloseUserMenu();
-  //   navigate("/account/profile");
-  // };
+  const handleProfile = () => {
+    handleCloseUserMenu();
+    navigate("/account/profile");
+  };
 
   const handleChange = (event) => {
     setSearchText(event.target.value);
@@ -124,7 +125,9 @@ export default function Navigation() {
   };
   const adminnavigator = () => {
     setAdmin(true)
+   
   navigate("/admin");
+   
    
   };
 
@@ -480,9 +483,11 @@ export default function Navigation() {
                         aria-expanded={open ? "true" : undefined}
                         // onClick={handleUserClick}
                         sx={{
-                          bgcolor: deepPurple[500],
+                          bgcolor: "rgb(124 58 237)",
                           color: "white",
                           cursor: "pointer",
+                          height: "35px",
+                           width: "35px",
                         }}
                       >
                         {auth.user?.firstName[0].toUpperCase()}
@@ -506,7 +511,9 @@ export default function Navigation() {
                           "aria-labelledby": "basic-button",
                         }}
                       >
-
+                      <MenuItem onClick={handleProfile}>
+                      <AccountCircle sx={{color:"grey"}}/> <div className="ml-2 text-gray-500">Profile</div> 
+                        </MenuItem>
                         <MenuItem onClick={handleMyOrderClick}>
                       <ListAltIcon sx={{color:"grey"}}/> <div className="ml-2 text-gray-500">My orders</div> 
                         </MenuItem>
@@ -545,7 +552,7 @@ export default function Navigation() {
 
                   {/* Admin */}
                   {auth.user?.role=="admin" && 
-                  <div className="ml-4 flow-root lg:ml-6">
+                  <div className="ml-4 flow-root lg:ml-6 border">
                   <Button
                     onClick={adminnavigator}
                     className="group -m-2 flex items-center p-2"

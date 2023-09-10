@@ -16,19 +16,7 @@ import AccessDenied from './Pages/AccessDenied';
 // import Routers from './Routers/Routers';
 
 function App() {
-  // const jwt = localStorage.getItem("jwt");
-  // const [product, setProduct] = useState(null);
-
-  // useEffect(() => {
-     
-  //     axios.get(`${API_BASE_URL}/api/users/profile`,{
-  //       headers:{
-  //         "Authorization":`Bearer ${jwt}`
-  //       }
-  //     })
-  //         .then(response => setProduct(response.data));
-     
-  // }, []);
+  
   const {  admin , setAdmin } = useContext(UserContext);
  
   return (

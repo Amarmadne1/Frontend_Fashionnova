@@ -104,10 +104,17 @@ const ProductsTable = () => {
                 label="Category"
                 onChange={(e) => handleFilterChange(e, "category")}
               >
-                <MenuItem value={"pant"}>Men's Pants</MenuItem>
-                <MenuItem value={"mens_kurta"}>Men's Kurta</MenuItem>
-                <MenuItem value={"saree"}>Saree</MenuItem>
-                <MenuItem value={"lengha_choli"}>Lengha Choli</MenuItem>
+                 <MenuItem value="tops">Tops</MenuItem>
+                <MenuItem value="women dress">Dresses</MenuItem>
+                <MenuItem value="sarees">Sarees</MenuItem>
+                <MenuItem value="shirts">Shirts</MenuItem>
+                <MenuItem value="men kurtas">Men kurtas</MenuItem>
+                <MenuItem value="men jeans">Men jeans</MenuItem>
+                <MenuItem value="lengha choli">Lengha Choli</MenuItem>
+                <MenuItem value="shoes">Shoes</MenuItem>
+                <MenuItem value="gouns">Gouns</MenuItem>
+                <MenuItem value="women jeans">Women jeans</MenuItem>
+                <MenuItem value="women kurtas">Women kurtas</MenuItem>
               </Select>
             </FormControl>
           </Grid>

@@ -69,7 +69,7 @@ const UpdateProductForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProduct());
+    dispatch(updateProduct({data:productData,jwt}));
     console.log(productData);
   };
 

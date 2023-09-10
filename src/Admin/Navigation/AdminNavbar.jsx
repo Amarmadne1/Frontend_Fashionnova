@@ -18,6 +18,12 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import { UserContext } from '../../UserContext';
+import { useContext } from "react";
+import { Navigate, useNavigate } from 'react-router-dom';
+
+  
+  
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -61,10 +67,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function AdminNavbar({handleSideBarViewInMobile}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const {  admin , setAdmin } = useContext(UserContext);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('lg'));
-
+  const navigate = useNavigate();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -85,6 +92,11 @@ export default function AdminNavbar({handleSideBarViewInMobile}) {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const handleadmin =() => {
+    setAdmin(true);
+    navigate("/");
+    
+  };
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -173,7 +185,13 @@ export default function AdminNavbar({handleSideBarViewInMobile}) {
           >
             <MenuIcon />
           </IconButton>}
-          <Avatar alt="Zosh" src="https://res.cloudinary.com/ddkso1wxi/image/upload/v1675919455/Logo/Copy_of_Zosh_Academy_nblljp.png" />
+          <div className="text-xl font-extrabold">
+                <button onClick={handleadmin}>
+                  <span className="sr-only">Your Company</span>
+                  FASHIONOVA
+                  </button>
+              </div>
+        
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
